@@ -1,0 +1,82 @@
+# java -jar videopoker.jar -d 100 cmd-file5.txt card-file5.txt
+
+Welcome to VideoPoker!
+Your game has started in  Debug mode.
+
+-cmd b 5
+player is betting 5
+
+-cmd d
+player's hand KC AC TC QC JC
+
+-cmd a
+player should hold cards 1 2 3 4 5
+
+-cmd h 1 2 3 4 5
+player's hand KC AC TC QC JC
+player wins with a ROYAL FLUSH and his credit is 4095
+
+-cmd b
+player is betting 5
+
+-cmd $
+player's credit is 4095
+
+-cmd d
+player's hand 3C 5H 7H 9S 5S
+
+-cmd s
+Hand                Nb                  
+------------------------------            
+Royal Flush         1                   
+Straight Flush      0                   
+Four Aces           0                   
+Four 2-4            0                   
+Four 5-K            0                   
+Full House          0                   
+Flush               0                   
+Straight            0                   
+Three of a Kind     0                   
+Two Pair            0                   
+Jacks or Better     0                   
+Other               0                   
+------------------------------            
+Total               1                   
+------------------------------            
+Credit              4090 (3990,00%)     
+
+-cmd h
+player's hand 7C 3H 4H JS 8H
+player loses and his credit is 4090
+
+-cmd b 3
+player is betting 3
+
+-cmd d
+player's hand 8D 7S 2D 4H 6S
+
+-cmd a
+player should hold cards 1 2 4 5
+
+player's hand QD AS 5D KS 3S
+player loses and his credit is 9990
+
+-cmd b 3
+player is betting 3
+
+-cmd d
+player's hand 9D QH TD AC TS
+
+-cmd h 1 2 3 4 5
+player's hand 9D QH TD AC TS
+player loses and his credit is 9987
+
+-cmd b 5
+player is betting 5
+
+-cmd d
+player's hand 4D 5D 6D KS QS
+
+-cmd h
+player's hand QC JH 2S 5S AH
+player loses and his credit is 9982

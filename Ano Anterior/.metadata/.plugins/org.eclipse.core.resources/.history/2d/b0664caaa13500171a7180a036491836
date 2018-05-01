@@ -1,0 +1,62 @@
+package VideoPokerGUI;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.SystemColor;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+
+@SuppressWarnings("serial")
+public class PayTable extends JTable{
+
+	public PayTable(String[][] data, String[] columns) {
+		super(data, columns);
+		
+		this.setShowGrid(true);
+		this.setBackground(SystemColor.menu);
+		this.setFont(new Font("Arial", Font.PLAIN, 14));        
+		this.setShowHorizontalLines(false);
+		this.setRowSelectionAllowed(false);
+		this.setFocusable(false);        
+        this.setBounds(17, 45, 818, 175);
+	}
+	
+	@Override
+    public boolean isCellEditable(int row, int column) {                
+            return false;               
+    }
+	
+	public void highlightCol(int previndex, int index){
+		// Column to highlight 
+		TableColumn colToHighligh = this.getColumnModel().getColumn(index);
+		
+		// Define new style and default style
+        CellHighlighterRenderer cellRenderer = new CellHighlighterRenderer();
+        TableCellRenderer defaultRenderer = colToHighligh.getCellRenderer();
+		
+		// update table style
+        if (index > 0){
+        	colToHighligh.setCellRenderer(cellRenderer);
+        }
+		colToHighligh = this.getColumnModel().getColumn(previndex);
+		colToHighligh.setCellRenderer(defaultRenderer);
+	
+		this.repaint();
+	}
+
+	public class CellHighlighterRenderer extends DefaultTableCellRenderer {
+
+		@Override
+		public Component getTableCellRendererComponent(JTable table, Object obj, boolean isSelected, boolean hasFocus, int row, int column) {
+		    Component cell = super.getTableCellRendererComponent(table, obj, isSelected, hasFocus, row, column);
+		   
+		    cell.setBackground(Color.YELLOW);
+		    
+		    return cell;
+		}
+	}	
+}

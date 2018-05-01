@@ -1,0 +1,49 @@
+# java -jar VideoPokerGROUP3.jar -d 100 cmd-file2.txt card-file2.txt
+
+Welcome to VideoPoker!
+Your game has started in  Debug mode.
+
+-cmd b 5
+player is betting 5
+
+-cmd d
+player's hand 2H 3H 4H 6H 7H
+
+-cmd a
+player should hold cards 1 2 3 4 5
+
+-cmd h 1 2 3 4
+player's hand 2H 3H 4H 6H AH
+player wins with a FLUSH and his credit is 130
+
+-cmd $
+player's credit is 130
+
+-cmd b
+player is betting 5
+
+-cmd q
+q: illegal command
+
+-cmd d
+player's hand AC 9H QC AS 8H
+
+-cmd $
+player's credit is 125
+
+-cmd a
+player should hold cards 1 4
+
+-cmd h 1 4 5
+player's hand AC 8D 7S AS 8H
+player wins with a TWO PAIR and his credit is 130
+
+-cmd d
+player's hand 3H 7D 5S 7D 4D
+
+-cmd a
+player should hold cards 1 2 3 5
+
+-cmd h 1 2 4 5
+player's hand 3H 7D 5S 7D 4D
+player loses and his credit is 125

@@ -1,0 +1,92 @@
+# java -jar videopoker.jar -d 10000 cmd-file4.txt card-file4.txt
+
+Welcome to VideoPoker!
+Your game has started in  Debug mode.
+
+-cmd a
+a: illegal command
+
+-cmd d
+d: illegal command
+
+-cmd s
+Hand                Nb                  
+------------------------------            
+Royal Flush         0                   
+Straight Flush      0                   
+Four Aces           0                   
+Four 2-4            0                   
+Four 5-K            0                   
+Full House          0                   
+Flush               0                   
+Straight            0                   
+Three of a Kind     0                   
+Two Pair            0                   
+Jacks or Better     0                   
+Other               0                   
+------------------------------            
+Total               0                   
+------------------------------            
+Credit              10000 (0,00%)       
+
+-cmd $
+player's credit is 10000
+
+-cmd j
+j: illegal command
+
+-cmd h
+h: illegal command
+
+-cmd b 1
+player is betting 1
+
+-cmd h
+h: illegal command
+
+-cmd d
+player's hand 5H 4D 5S 7S 3H
+
+-cmd h 1 3
+player's hand 5H 4H 5S JS 2H
+player loses and his credit is 9999
+
+-cmd b 5
+player is betting 5
+
+-cmd d
+player's hand 3H 4H 6H 7H 7S
+
+-cmd h
+player's hand 3H 7D 5S 7D 4S
+player loses and his credit is 9994
+
+-cmd b
+player is betting 5
+
+-cmd d
+player's hand AH AC 9H QC AS
+
+-cmd h 4 2 1
+player's hand AH AC 8H QC 8D
+player wins with a TWO PAIR and his credit is 9994
+
+-cmd s
+Hand                Nb                  
+------------------------------            
+Royal Flush         0                   
+Straight Flush      0                   
+Four Aces           0                   
+Four 2-4            0                   
+Four 5-K            0                   
+Full House          0                   
+Flush               0                   
+Straight            0                   
+Three of a Kind     0                   
+Two Pair            1                   
+Jacks or Better     0                   
+Other               2                   
+------------------------------            
+Total               3                   
+------------------------------            
+Credit              9994 (-0,06%)       
