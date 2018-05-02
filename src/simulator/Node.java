@@ -31,4 +31,9 @@ public class Node {
 		return this.type;
 	}
 	
+	public String toString()
+	{
+		return "Node coordinates: " + position + " Node type: " + type + " Node edges: " + edges;
+	}
+	
 }
