@@ -2,11 +2,9 @@ package simulator;
 
 import java.util.*;
 
-import jdk.internal.jimage.ImageReader.Node;
-
 public class Grid {
-	int width;
-	int height;
+	private int width;
+	private int height;
 	List<Node> lines[];
 	
 	/*Lista de Nodes*/
@@ -29,6 +27,10 @@ public class Grid {
 		
 	}
 	
-	
-
+	public Node getNode(int[] position)
+	{
+		Node node = lines[position[1]].get(position[0]);
+		
+		return node;
+	}
 }

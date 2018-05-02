@@ -16,6 +16,11 @@ public class Node {
 		System.arraycopy(edges, 0, this.edges, 0, edges.length);
 	}
 	
+	public int[] getPosition()
+	{
+		return position;
+	}
+	
 	public int[] getEdges()
 	{
 		return this.edges;
@@ -24,11 +29,6 @@ public class Node {
 	public int getType()
 	{
 		return this.type;
-	}
-	
-	public int[] getPosition()
-	{
-		return position;
 	}
 	
 }
