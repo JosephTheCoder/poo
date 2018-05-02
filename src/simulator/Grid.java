@@ -2,13 +2,19 @@ package simulator;
 
 import java.util.*;
 
+/**
+ * Class for the Map main representation
+ * 
+ * The map is a matrix of Node objects
+ * 
+ * @author menes
+ *
+ */
+
 public class Grid {
 	private int width;
 	private int height;
 	private Node map[][];
-	
-	/*Array de listas*/
-		/*Lista de Nodes*/
 	
 	
 	public Grid(int width, int height)
@@ -23,12 +29,28 @@ public class Grid {
 	{
 		Node newNode = new Node(position, edges, type);
 	
-		map[position[0]][position[1]] = newNode;
+		map[position[1]][position[0]] = newNode;
 		
 	}
 	
 	public Node getNode(int[] position)
 	{
-		return map[position[0]][position[1]];
+		return map[position[1]][position[0]];
+	}
+	
+	public String toString(int line) /*return a string with the given line*/
+	{
+		String str = new String();
+		
+		for(int i = 0; i < width; i++)
+			str += Integer.toString(map[line][i].getType()) + " ";
+		
+		return str;
+	}
+	
+	public void printGrid()
+	{
+		for(int i = 0; i < height; i++)
+			System.out.println(toString(i));
 	}
 }
