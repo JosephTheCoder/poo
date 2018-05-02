@@ -1,14 +1,18 @@
 package simulator;
 
 public class Node {
-	private int edges[4];
+	private int position[2]; /*[x, y]*/
+	
+	private int edges[4]; /*-1 for obstacles, all other int for weight*/
+							/*[up, down, left, right]*/
 	private int type;
 	
 	
-	public Node(int[] edges, int node_type) 
+	public Node(int[] position, int[] edges, int node_type) 
 	{
 		this.type = node_type;
-
+		
+		System.arraycopy(position, 0, this.position, 0, position.length);
 		System.arraycopy(edges, 0, this.edges, 0, edges.length);
 	}
 	
@@ -20,6 +24,11 @@ public class Node {
 	public int getType()
 	{
 		return this.type;
+	}
+	
+	public int[] getPosition()
+	{
+		return position;
 	}
 	
 }
