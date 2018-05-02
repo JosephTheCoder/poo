@@ -1,13 +1,24 @@
 package simulator;
 
-public class Event {
-	int index = 0;
+public abstract class Event {
 	
-	public Event(int finalinst) {
+	
+	package float auxEvent;
+	
+	package int index = 0;
+	
+	public Timer(int finalinst) {
 		int time = 0;
 		index = index+1
-		while(time < (finalinst/20)) {
-			
+		while(time < finalinst) {
+			time = time + (finalinst/20);
 		}
 	}
+	
+	auxEvent = (1 - Math.log(comfort)));
+
+	abstract void death();
+	abstract void reproduction();
+	abstract void move();
+
 }
