@@ -4,6 +4,7 @@ import PokerProject.Card;
 
 public abstract class Event {
 	
+<<<<<<< HEAD:simulator/Event.java
 	package int id1 = 0;
 	package float auxEvent;
 	
@@ -15,6 +16,12 @@ public abstract class Event {
 	public getNewId() {
 		id = id+1
 	}
+=======
+	
+	float auxEvent;
+	
+	int index = 0;
+>>>>>>> 8dc4931de2cd4e26deb0a99e147c60a9b89889b3:src/simulator/Event.java
 	
 	}
 			
