@@ -1,5 +1,5 @@
 package simulator;
 
-public class Move {
+public class Move extends Event {
 
 }
