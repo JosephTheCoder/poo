@@ -33,7 +33,14 @@ public class Node {
 	
 	public String toString()
 	{
-		return "Node coordinates: " + position + " Node type: " + type + " Node edges: " + edges;
+		String x = Integer.toString(position[1]);
+		String y = Integer.toString(position[0]);
+		String up = Integer.toString(edges[0]);
+		String down = Integer.toString(edges[1]);
+		String left = Integer.toString(edges[2]);
+		String right = Integer.toString(edges[2]);
+		
+		return "Node coordinates: [" + x + "," + y + "]  Type: " + type + "  Edges: " + up + " " + down + " " + left + " " + right;
 	}
 	
 }
