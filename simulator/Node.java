@@ -1,10 +1,10 @@
 package simulator;
 
 public class Node {
-	private int position[2]; /*[x, y]*/
+	private int position[] = new int[2]; /*[x, y]*/
 	
-	private int edges[4]; /*-1 for obstacles, all other int for weight*/
-							/*[up, down, left, right]*/
+	private int edges[] = new int[4]; /*-1 for obstacles, all other int for weight*/
+										/*[up, down, left, right]*/
 	private int type;
 	
 	
