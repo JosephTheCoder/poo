@@ -3,9 +3,9 @@ package simulator;
 public abstract class Event {
 	
 	
-	package float auxEvent;
+	float auxEvent;
 	
-	package int index = 0;
+	int index = 0;
 	
 	public Timer(int finalinst) {
 		int time = 0;
