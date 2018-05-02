@@ -1,21 +1,32 @@
 package simulator;
 
+import PokerProject.Card;
+
 public abstract class Event {
 	
-	
+	package int id1 = 0;
 	package float auxEvent;
 	
-	package int index = 0;
+	public Event(){
+		id = ;
+		auxEvent = id1;
+	}	
 	
+	public getNewId() {
+		id = id+1
+	}
+	
+	}
+			
 	public Timer(int finalinst) {
 		int time = 0;
-		index = index+1
+		
 		while(time < finalinst) {
 			time = time + (finalinst/20);
 		}
 	}
 	
-	auxEvent = (1 - Math.log(comfort)));
+	
 
 	abstract void death();
 	abstract void reproduction();
