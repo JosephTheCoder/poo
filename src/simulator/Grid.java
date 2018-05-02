@@ -7,8 +7,8 @@ public class Grid {
 	private int height;
 	List<Node> lines[];
 	
-	/*Lista de Nodes*/
-	/*Lista de listas de Nodes -> linhas*/
+	/*Array de listas*/
+		/*Lista de Nodes*/
 	
 	
 	public Grid(int width, int height)
@@ -32,5 +32,14 @@ public class Grid {
 		Node node = lines[position[1]].get(position[0]);
 		
 		return node;
+	}
+	
+	public static void main(String[] args)
+	{
+		public Grid mapa = new Grid(10,10);
+		
+		mapa.addNode({0,0}, 1, {-1,-1,1,2});
+		
+		
 	}
 }
