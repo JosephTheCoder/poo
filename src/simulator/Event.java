@@ -1,21 +1,31 @@
 package simulator;
 
-import PokerProject.Card;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Event {
 
-	package int id1 = 0;
-	package float auxEvent;
+	int id;
+	float time;
 	
-	public Event(){
-		id = ;
-		auxEvent = id1;
-	}	
+	List<Event> eventList;
 	
-	public getNewId() {
-		id = id+1
+	public Event(int[] id, float[] time) {
+		this.id=id;
+		this.time=time
+		this.eventList= new eventList<Event>();		
 	}
-			
+	
+	public int[] getEventId()
+	{
+		return this.id;
+	}
+	
+	public float[] getEventTime()
+	{
+		return this.time;
+	}
+				
 	public Timer(int finalinst) {
 		int time = 0;
 		
@@ -24,8 +34,6 @@ public abstract class Event {
 		}
 	}
 	
-	
-
 	abstract void death();
 	abstract void reproduction();
 	abstract void move();
