@@ -1,5 +1,5 @@
 package simulator;
 
-public class Reproduction extends Eventu {
+public class Reproduction extends Event {
 
 }

@@ -38,7 +38,16 @@ public class Grid {
 		return map[position[1]][position[0]];
 	}
 	
-	public String toString(int line) /*return a string with the given line*/
+	
+	/*
+	 * Method that returns the next adjacent available node to a given position
+	 */
+	public Node getNextAvailableNode(int[] position)
+	{
+		
+	}
+	
+	public String toString(int line)
 	{
 		String str = new String();
 		

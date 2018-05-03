@@ -1,6 +1,6 @@
 package simulator;
 
-public class Death extends Eventu {
+public class Death extends Event {
 	
 	private int deathValue;
 		
