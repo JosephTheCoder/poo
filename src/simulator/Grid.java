@@ -9,6 +9,8 @@ package simulator;
  *
  */
 
+import java.util.Random;
+
 public class Grid {
 	private int width;
 	private int height;
@@ -16,6 +18,7 @@ public class Grid {
 	
 	private static final int empty = 0;
 	private static final int obstacle = 1;
+	private static final int outOfBounds = -1;
 	
 	public Grid(int width, int height, int[][] obstacles, int[][] specialZones)
 	{
@@ -34,6 +37,22 @@ public class Grid {
 				position[1] = i;
 				
 				addNode(position, empty);
+				
+				if(i == 0) {
+					getNode(position).setBottomEdge(outOfBounds);
+				}
+				
+				else if(i == height - 1) {
+					getNode(position).setUpperEdge(outOfBounds);
+				}
+				
+				if(j == 0) {
+					getNode(position).setLeftEdge(outOfBounds);
+				}
+				
+				else if(j == width - 1) {
+					getNode(position).setRightEdge(outOfBounds);
+				}
 			}
 		}
 		
@@ -91,12 +110,14 @@ public class Grid {
 			yend = specialZones[i][3];
 			weight = specialZones[i][4];
 			
+			/******Meter as edges do esxterior a -1****/
 			for(y = ystart; y <= yend; y++)
 			{
 				for(x = xstart; x <= xend; x++)
 				{
 					position[0] = x;
 					position[1] = y;
+					
 					
 					if(x < xend)
 						getNode(position).setRightEdge(weight);
@@ -132,11 +153,51 @@ public class Grid {
 	 */
 	public int[] getNextPosition(int[] actualPosition)
 	{
-		int[] position = new int[2];
+		int[] nextPosition = new int[2];
+		int x = actualPosition[0];
+		int y = actualPosition[1];
+		int found = 0;
 		
-		//TODO faz o random a volta
+		Random rand = new Random();
+		int randomInt;
 		
-		return position;
+		/******************************** TODO *******/
+		
+		do {
+			randomInt = rand.nextInt(3);
+			found = 0;
+			
+			if(getNode(actualPosition).getEdges()[randomInt] != outOfBounds)
+			{
+				if(randomInt == 0)
+				{
+					nextPosition[0] = x;
+					nextPosition[1] = y + 1;
+				}
+				
+				else if(randomInt == 1)
+				{
+					nextPosition[0] = x;
+					nextPosition[1] = y - 1;
+				}
+				
+				else if(randomInt == 2)
+				{
+					nextPosition[0] = x - 1;
+					nextPosition[1] = y;
+				}
+				
+				else if(randomInt == 3)
+				{
+					nextPosition[0] = x + 1;
+					nextPosition[1] = y;
+				}
+				found = 1;
+			}
+			
+		} while(getNode(nextPosition).getType() == obstacle || found == 0);
+		
+		return nextPosition;
 	}
 	
 	
