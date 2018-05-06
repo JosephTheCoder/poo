@@ -35,25 +35,25 @@ public class Node {
 	
 	public void setUpperEdge(int value)
 	{
-		if(edges[0] < value)
+		if(edges[0] < value || value == -1)
 			edges[0] = value;
 	}
 	
 	public void setBottomEdge(int value)
 	{
-		if(edges[1] < value)
+		if(edges[1] < value || value == -1)
 			edges[1] = value;
 	}
 
 	public void setLeftEdge(int value)
 	{
-		if(edges[2] < value)
+		if(edges[2] < value || value == -1)
 			edges[2] = value;
 	}
 	
 	public void setRightEdge(int value)
 	{
-		if(edges[3] < value)
+		if(edges[3] < value || value == -1)
 			edges[3] = value;
 	}
 	
