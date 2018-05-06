@@ -110,7 +110,6 @@ public class Grid {
 			yend = specialZones[i][3];
 			weight = specialZones[i][4];
 			
-			/******Meter as edges do esxterior a -1****/
 			for(y = ystart; y <= yend; y++)
 			{
 				for(x = xstart; x <= xend; x++)
@@ -126,10 +125,10 @@ public class Grid {
 						getNode(position).setLeftEdge(weight);
 					
 					if(y > ystart)
-						getNode(position).setUpperEdge(weight);
+						getNode(position).setBottomEdge(weight);
 					
 					if(y < yend)
-						getNode(position).setBottomEdge(weight);
+						getNode(position).setUpperEdge(weight);
 				}	
 			}
 		}
