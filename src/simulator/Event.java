@@ -5,6 +5,19 @@ import java.util.List;
 
 public abstract class Event {
 
+	public double calcEvent(int var) {
+		
+		double resultEvent = 0;
+		double auxConfort = get_confort();
+		
+		resultEvent = (1-Math.log(1-aux_Confort))*var;
+		
+		return resultEvent;
+	}
+	
+	
+	
+	
 	int id;
 	float time;
 	
@@ -32,10 +45,5 @@ public abstract class Event {
 		while(time < finalinst) {
 			time = time + (finalinst/20);
 		}
-	}
-	
-	abstract void death();
-	abstract void reproduction();
-	abstract void move();
-
+	}	
 }
