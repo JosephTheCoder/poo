@@ -19,26 +19,14 @@ public class Simulator {
 	public void SimulatorSimulate() {
 		
 		
-		//XMLFileParser parser = new XMLFileParser("data1.xml");
-		// cenas que supostamente veem do ficheiro
-		int confortsense = 3;
-		int deathparam = 10;
-		int reproductionparam = 1;
-		int moveparam = 1;
-		int finalinst = 100;
-		int gridheight = 4;
-		int gridwidth = 3;
-		int[] initialpoint = new int[2];
-		initialpoint[0]=1;
-		initialpoint[1]=1;
-		int  initialpop = 10;
-		int maxpop = 500;
+		XMLFileParser parser = new XMLFileParser("data1.xml");
+
 		Population world = new Population();
 		PriorityQueue<Event> Eventlist = new PriorityQueue<Event>( new EventComparator());
 		
 		
 		// criação da população inicial
-		for(int i=0;i<initialpop;i++) {
+		for(int i=0;i<parser.getInitpop();i++) {
 			
 			Individual ind = new Individual(i);
 			world.addIndividualAlive(ind);
@@ -63,7 +51,7 @@ public class Simulator {
 		int i =0;
 		for(Individual ind : inds) {
 			
-			Move aux = new Move(Utils.genericTimeCalculator(moveparam,ind.getConfort())+i,ind);
+			Move aux = new Move(Utils.genericTimeCalculator(parser.getMoveParam(),ind.getConfort())+i,ind);
 			Eventlist.add(aux);
 			i++;
 			
