@@ -14,7 +14,7 @@ public class Individual  {
 	
 	private double confort;
 	
-	List<Node> path_list;
+	List<int[]> path_list;
 	
 	//constructor
 	
@@ -22,7 +22,7 @@ public class Individual  {
 		 
 		this.identifier=identifier;
 		this.confort=initial_confort;
-		this.path_list= new ArrayList<Node>();
+		this.path_list= new ArrayList<int[]>();
 		
 		
 	}
@@ -30,7 +30,7 @@ public class Individual  {
 	public Individual(int identifier) {
 		
 		this.identifier=identifier;
-		this.path_list=new ArrayList<Node>();
+		this.path_list=new ArrayList<int[]>();
 		this.confort=0;
 		
 	}
@@ -75,33 +75,29 @@ public class Individual  {
 	}
 	
 	
-	
+	//falta os custos
 	public void addPathPoint(int[] point) {
 		
-		
-		int aux_nodetype =1;
-		
-		
-		Node aux = new Node(point,aux_nodetype);
-		
-		this.path_list.add(aux);
+		this.path_list.add(point);
 		
 	}
 	
 	
-	public Node getCurrentPoint() {
-		
-		return this.path_list.get(this.path_list.size());
+	public int[] getCurrentPoint() {
+		int test;
+		test=this.path_list.size();
+		test=test-1;
+		return this.path_list.get(test);
 	}
 	
 	
-	public Node[] getPath() {
+	public List<int[]> getPath() {
 		
-		Node path[]= new Node[this.path_list.size()];
+		List<int[]>path= new ArrayList<int[]>();
 		
 		for(int i=0; i< this.path_list.size();i++) {
 			
-			path[i]=this.path_list.get(i);
+			path.add(this.path_list.get(i));
 		}
 		
 		
@@ -124,12 +120,26 @@ public class Individual  {
 		return map.getNextPosition(position);
 		
 	}
-
+	
+	public void printPathList() {
+		
+		List<int[]> auxiterator = path_list;
+		
+		for(int[]aux : auxiterator) {
+			System.out.println(" x= "+aux[0]+" y= "+aux[1]);
+			
+		}
+		
+	}
 
 	@Override
 	public String toString() {
-		return "Individual [identifier=" + identifier + ", confort=" + confort + ", path_list=" + path_list + "]";
+		return "Individual [identifier=" + identifier + ", confort=" + confort + "]";
 	}
+
+
+
+
 	
 	
 	

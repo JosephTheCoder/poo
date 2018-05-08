@@ -17,11 +17,11 @@ public class XMLFileParser {
 				initpop,
 				maxpop,
 				comfortsens,
-				gridwidth,
-				gridheight,
-				deathparam,
-				reproductionparam,
-				moveparam;
+				grid_width,
+				grid_height,
+				death_param,
+				reproduction_param,
+				move_param;
 	private int[][] specialZones;  //[xinitial,yinitial,xfinal,yfinal,cost]
 	private int[][] obstacles;		//[xpos,ypos]
 	private int[] initialpoint = new int[2]; //[x,y]
@@ -76,8 +76,8 @@ public class XMLFileParser {
 			
 			//Grid Element
 			element = (Element) doc.getElementsByTagName("grid").item(0);
-			gridwidth = Integer.parseInt(element.getAttribute("colsnb"));
-			gridheight = Integer.parseInt(element.getAttribute("rowsnb"));
+			grid_width = Integer.parseInt(element.getAttribute("colsnb"));
+			grid_height = Integer.parseInt(element.getAttribute("rowsnb"));
 			
 			//initialpoint
 			element = (Element) doc.getElementsByTagName("initialpoint").item(0);
@@ -128,13 +128,13 @@ public class XMLFileParser {
 			
 			//events
 			element = (Element) doc.getElementsByTagName("death").item(0);
-			deathparam = Integer.parseInt(element.getAttribute("param"));
+			death_param = Integer.parseInt(element.getAttribute("param"));
 			
 			element = (Element) doc.getElementsByTagName("reproduction").item(0);
-			reproductionparam = Integer.parseInt(element.getAttribute("param"));
+			reproduction_param = Integer.parseInt(element.getAttribute("param"));
 			
 			element = (Element) doc.getElementsByTagName("move").item(0);
-			moveparam = Integer.parseInt(element.getAttribute("param"));
+			move_param = Integer.parseInt(element.getAttribute("param"));
 			
 			
 			System.out.println(toString());
@@ -177,12 +177,12 @@ public class XMLFileParser {
 		return comfortsens;
 	}
 
-	public int getGridWidth() {
-		return gridwidth;
+	public int getGrid_width() {
+		return grid_width;
 	}
 
-	public int getGridHeight() {
-		return gridheight;
+	public int getGrid_height() {
+		return grid_height;
 	}
 	
 	public int[] getInitialpoint() {
@@ -193,16 +193,16 @@ public class XMLFileParser {
 		return finalpoint;
 	}
 
-	public int getDeathParam() {
-		return deathparam;
+	public int getDeath_param() {
+		return death_param;
 	}
 
-	public int getReproductionParam() {
-		return reproductionparam;
+	public int getReproduction_param() {
+		return reproduction_param;
 	}
 
-	public int getMoveParam() {
-		return moveparam;
+	public int getMove_param() {
+		return move_param;
 	}
 
 	public int[][] getSpecialZones() {

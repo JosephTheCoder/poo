@@ -1,5 +1,6 @@
 package events;
 
+import java.util.*;
 import grid.*;
 import individual.*;
 
@@ -19,7 +20,7 @@ public class Reproduction extends Event {
 			int childid = world.individualsalive.size();
 			double parentspathlenght;
 			double confortslenght;
-			Node[] auxpath;
+			List<int[]> auxpath = new ArrayList<int[]>();
 			
 			// get parent
 			auxparent=world.individualsalive.get(world.individualsalive.indexOf(ind));
@@ -33,12 +34,12 @@ public class Reproduction extends Event {
 			world.individualsalive.add(child);
 			
 			for(int i=0;i<parentspathlenght;i++) {
-				child.addPathPoint(auxpath[i].getPosition());
+				child.addPathPoint(auxpath.get(i));
 				
 			}
 			
 			for(int i=0;i<confortslenght;i++) {
-				child.addPathPoint(auxpath[i+(int)parentspathlenght].getPosition());
+				child.addPathPoint(auxpath.get(i+(int)parentspathlenght));
 				
 			}
 			

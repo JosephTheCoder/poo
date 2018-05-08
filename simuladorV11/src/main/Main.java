@@ -10,8 +10,6 @@ public class Main {
 		
 		Simulator simulation = new Simulator();
 		
-		System.out.println("Hello");
-		
 		simulation.SimulatorSimulate();
 		
 	}

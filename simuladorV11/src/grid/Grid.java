@@ -58,10 +58,7 @@ public class Grid {
 	 */
 	public void addNode(int[] position, int type)
 	{
-		Node newNode = new Node(position, type);
-	
-		map[position[1]][position[0]] = newNode;
-		
+		map[position[1]][position[0]] = new Node(position, type);
 	}
 	
 	
@@ -80,8 +77,6 @@ public class Grid {
 	private void setObstacles(int[][] obstacles)
 	{
 		for(int i = 0; i < obstacles.length; i++) {
-			System.out.println(obstacles[i][0] + " " + obstacles[i][1]);
-			System.out.println(getNode(obstacles[i]).toString());
 			getNode(obstacles[i]).setType(obstacle);
 		}
 	}
@@ -183,13 +178,18 @@ public class Grid {
 					nextPosition[0] = x + 1;
 					nextPosition[1] = y;
 				}
-				found = 1;
+				
+				
+				if(getNode(nextPosition).getType() == empty)
+					found = 1;
 			}
 			
-		} while(getNode(nextPosition).getType() == obstacle || found == 0);
+		} while(found == 0);
 		
 		return nextPosition;
 	}
+	
+	
 	
 	
 	/*

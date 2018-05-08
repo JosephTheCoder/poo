@@ -24,5 +24,12 @@ public abstract class Event {
 	
 	public abstract void action(Grid map ,Population world);
 
+	@Override
+	public String toString() {
+		return "Event [time=" + time + ", ind=" + ind + "]";
+	}
+
 
 }
+
+
