@@ -58,10 +58,7 @@ public class Grid {
 	 */
 	public void addNode(int[] position, int type)
 	{
-		Node newNode = new Node(position, type);
-	
-		map[position[1]][position[0]] = newNode;
-		
+		map[position[1]][position[0]] = new Node(position, type);
 	}
 	
 	
@@ -186,10 +183,13 @@ public class Grid {
 					nextPosition[0] = x + 1;
 					nextPosition[1] = y;
 				}
-				found = 1;
+				
+				System.out.println("posiçãaaaaao: " + nextPosition[0] + nextPosition[1] + Integer.toString(getNode(actualPosition).getEdges()[1]));
+				if(getNode(nextPosition).getType() == empty)
+					found = 1;
 			}
 			
-		} while(getNode(nextPosition).getType() == obstacle || found == 0);
+		} while(found == 0);
 		
 		System.out.println("Entrou cena da grid");
 		System.out.println(nextPosition[0]);

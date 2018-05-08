@@ -107,7 +107,10 @@ public class Simulator {
 		}
 		
 		for(Individual ind : inds) {
-			
+			int[] position = new int[2];
+			position[0] = 0;
+			position[1] = 0;
+			System.out.println(worldmap.getNode(position).toString());
 			System.out.println(ind.toString());
 			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		}
