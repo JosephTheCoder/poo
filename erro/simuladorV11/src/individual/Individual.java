@@ -74,6 +74,23 @@ public class Individual  {
 		
 	}
 	
+	/**TODO CALC THE COST OF THE PATH**/
+	/*
+	 * 
+	 */
+	private int calcCostPath() {
+		int cost_path;
+		
+		//Itera nas posições que ele percorreu
+			//Ve qual foi a aresta
+				//Adiciona o peso da aresta ao cost_path
+		
+		
+		
+		
+		return cost_path;
+	}
+	
 	
 	//falta os custos
 	public void addPathPoint(int[] point) {
