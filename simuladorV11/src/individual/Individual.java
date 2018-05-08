@@ -74,6 +74,35 @@ public class Individual  {
 		
 	}
 	
+	public int calcCostPath(Grid map) {
+		int cost_path = 0;
+		int[] actualPosition = new int[2];
+		int[] nextPosition = new int[2];
+		
+		for(int i = 0; i < this.path_list.size() - 1; i++) {
+			actualPosition = this.path_list.get(i);
+			nextPosition = this.path_list.get(i+1);
+			
+			if(actualPosition[0] < nextPosition[0]) { //went right
+				cost_path += map.getNode(actualPosition).getEdges()[3];
+			}
+			
+			else if(actualPosition[0] > nextPosition[0]) { //went left
+				cost_path += map.getNode(actualPosition).getEdges()[2];
+			}
+			
+			else if(actualPosition[1] < nextPosition[1]) { //went up
+				cost_path += map.getNode(actualPosition).getEdges()[0];
+			}
+			
+			else if(actualPosition[1] > nextPosition[1]) { //went down
+				cost_path += map.getNode(actualPosition).getEdges()[1];
+			}
+		}
+		
+		return cost_path;
+	}
+	
 	
 	//falta os custos
 	public void addPathPoint(int[] point) {
