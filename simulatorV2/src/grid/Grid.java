@@ -109,27 +109,43 @@ public class Grid {
 			xend = specialZones[i][2];
 			yend = specialZones[i][3];
 			weight = specialZones[i][4];
+					
+			for(x = xstart; x <= xend; x++)
+			{
+					position[0] = x;
+					position[1] = ystart;
+					
+					
+					if(x < xend) /*TODO meter areas especiais so na periferia!*/{
+						getNode(position).setRightEdge(weight);
+						position[1] = yend;
+						getNode(position).setRightEdge(weight);
+					}
+					
+					if(x > xstart) {
+						getNode(position).setLeftEdge(weight);
+						position[1] = yend;
+						getNode(position).setRightEdge(weight);
+					}
+			}
 			
 			for(y = ystart; y <= yend; y++)
 			{
-				for(x = xstart; x <= xend; x++)
-				{
-					position[0] = x;
+					position[0] = xstart;
 					position[1] = y;
 					
 					
-					if(x < xend)
+					if(y < yend) /*TODO meter areas especiais so na periferia!*/{
 						getNode(position).setRightEdge(weight);
+						position[0] = xend;
+						getNode(position).setRightEdge(weight);
+					}
 					
-					if(x > xstart)
+					if(y > ystart) {
 						getNode(position).setLeftEdge(weight);
-					
-					if(y > ystart)
-						getNode(position).setBottomEdge(weight);
-					
-					if(y < yend)
-						getNode(position).setUpperEdge(weight);
-				}	
+						position[0] = xend;
+						getNode(position).setRightEdge(weight);
+					}
 			}
 		}
 	}
