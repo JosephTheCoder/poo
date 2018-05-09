@@ -17,10 +17,10 @@ public class Simulator {
 		
 	}
 	
-	public void SimulatorSimulate() {
+	public void SimulatorSimulate(String filename) {
 		
 		
-		XMLFileParser parser = new XMLFileParser("data1.xml");
+		XMLFileParser parser = new XMLFileParser(filename);
 		// cenas que supostamente veem do ficheiro
 		int confortsense = parser.getComfortsens();
 		int deathparam = parser.getDeathParam();
