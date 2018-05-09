@@ -107,8 +107,16 @@ public class Individual  {
 	//falta os custos
 	public void addPathPoint(int[] point) {
 		
-		this.path_list.add(point);
+		int index = this.path_list.indexOf(point);
 		
+		if(index == -1)
+			this.path_list.add(point);
+		
+		else {
+			for(int i = index + 1; i < this.path_list.size(); i++) {
+				this.path_list.remove(i);
+			}
+		}
 	}
 	
 	
