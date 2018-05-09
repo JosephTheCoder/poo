@@ -52,15 +52,15 @@ public class Individual  {
 	}
 
 //*utils class	
-	public double calcConfort(int confort_sensitivity) {
+	public double calcConfort(Grid map, int confort_sensitivity) {
 		
 		double aux_confort=0;
 		
 		//** for test reasons**//
-		int cmax=1;
-		int cost_path=5;
-		int lenght_path=5;
-		int dist=5;
+		int cmax = map.getCmax();
+		int cost_path = calcCostPath(map);
+		int lenght_path = getPathSize();
+		int dist = calcDist(xsource, ysource, destx, desty);
 		int n=10;
 		int m=10;
 		//** for test reasons finish
@@ -116,7 +116,16 @@ public class Individual  {
 	//falta os custos
 	public void addPathPoint(int[] point) {
 		
-		this.path_list.add(point);
+		int index = this.path_list.indexOf(point);
+		
+		if(index == -1)
+			this.path_list.add(point);
+		
+		else {
+			for(int i = index + 1; i < this.path_list.size(); i++) {
+				this.path_list.remove(i);
+			}
+		}
 	}
 	
 	

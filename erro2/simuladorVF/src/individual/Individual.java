@@ -52,19 +52,23 @@ public class Individual  {
 	}
 
 //*utils class	
-	public double calcConfort(Grid worldmap ) {
+	public double calcConfort(Grid worldmap, int confort_sensitivity, int[] source, int[] dest) {
 		
 		double aux_confort=0;
 		
+		//** for test reasons**//
+		int cmax = worldmap.getCmax();
+		int cost_path = calcCostPath(worldmap);
+		int lenght_path = getPathSize();
+		int dist = calcDist(source[0], source[1], dest[0], dest[1]);
+		int n = worldmap.getWidth();
+		int m = worldmap.getHeight();
 		
+		aux_confort=(1-((cost_path-lenght_path+2)/((cmax-1)*lenght_path+3))^confort_sensitivity)*((1-(dist/(n+m+1)))^confort_sensitivity);
 		
-		aux_confort=(1-((this.calcCostPath(worldmap)-lenght_path+2)/((worldmap.setCMax(specialZones)-1)*lenght_path+3))^confort_sensitivity)*((1-(this.calcDist(xsource, ysource, destx, desty)/(n+m+1)))^confort_sensitivity);
-				
 		this.confort=aux_confort;
 		
-		return this.confort;																																					
-	
-		
+		return this.confort;																																						
 	}
 	
 	public int calcCostPath(Grid map) {

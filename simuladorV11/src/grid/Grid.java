@@ -7,6 +7,7 @@ public class Grid {
 	//variables for the dimensions and definition of the node matrix
 	private int width;
 	private int height;
+	private int cmax;
 	private Node map[][];
 	
 	//static variables for each node type
@@ -54,7 +55,6 @@ public class Grid {
 		
 		setObstacles(obstacles);
 		setSpecialZones(specialZones);
-		setCMax(specialZones);
 	}
 	
 	
@@ -94,6 +94,7 @@ public class Grid {
 	{
 		int xstart, ystart, xend, yend, weight, x, y;
 		int[] position = new int[2];
+		this.cmax = 1;
 		
 		for(int i = 0; i < specialZones.length; i++) {
 			xstart = specialZones[i][0];
@@ -101,6 +102,9 @@ public class Grid {
 			xend = specialZones[i][2];
 			yend = specialZones[i][3];
 			weight = specialZones[i][4];
+			
+			if(weight > cmax)
+				this.cmax = weight;
 			
 			for(y = ystart; y <= yend; y++)
 			{
@@ -130,24 +134,7 @@ public class Grid {
 	/*
 	 * 
 	 */
-	private int setCMax(int[][] specialZones)
-	{
-		int cmax=1, weight;
-				
-		for(int i = 0; i < specialZones.length; i++) {
 
-			weight = specialZones[i][4];
-			
-			if (weight > cmax) {
-				cmax = weight;
-			}
-		}
-		return cmax;
-	}	
-	/*
-	 * 
-	 */
-	
 	public boolean isEmptyPosition(int[] position)
 	{
 		if(map[position[1]][position[0]].getType() == empty)
@@ -212,7 +199,10 @@ public class Grid {
 		return nextPosition;
 	}
 	
-	
+	public int getCmax()
+	{
+		return this.cmax;
+	}
 	
 	
 	/*
