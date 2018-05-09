@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Ano Anterior/VideoPokerGROUP3"/>
+	<classpathentry kind="src" path="erro/simuladorV11/src"/>
+	<classpathentry kind="src" path="simuladorV11/src"/>
+	<classpathentry kind="src" path="simulatorV0/src"/>
+	<classpathentry kind="src" path="simulatorV1/src"/>
+	<classpathentry kind="src" path="simulatorV2/src"/>
+	<classpathentry kind="lib" path="Ano Anterior/VideoPokerGROUP3.jar"/>
+	<classpathentry kind="output" path="erro/simuladorV11/bin"/>
+</classpath>

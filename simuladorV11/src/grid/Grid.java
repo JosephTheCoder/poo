@@ -54,6 +54,7 @@ public class Grid {
 		
 		setObstacles(obstacles);
 		setSpecialZones(specialZones);
+		setCMax(specialZones);
 	}
 	
 	
@@ -129,6 +130,24 @@ public class Grid {
 	/*
 	 * 
 	 */
+	private int setCMax(int[][] specialZones)
+	{
+		int cmax=1, weight;
+				
+		for(int i = 0; i < specialZones.length; i++) {
+
+			weight = specialZones[i][4];
+			
+			if (weight > cmax) {
+				cmax = weight;
+			}
+		}
+		return cmax;
+	}	
+	/*
+	 * 
+	 */
+	
 	public boolean isEmptyPosition(int[] position)
 	{
 		if(map[position[1]][position[0]].getType() == empty)
