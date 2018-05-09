@@ -4,12 +4,16 @@ package grid;
 import java.util.Random;
 
 public class Grid {
+	//variables for the dimensions and definition of the node matrix
 	private int width;
 	private int height;
 	private Node map[][];
 	
+	//static variables for each node type
 	private static final int empty = 0;
 	private static final int obstacle = 1;
+	
+	//static variable for unavailable edges
 	private static final int outOfBounds = -1;
 	
 	public Grid(int width, int height, int[][] obstacles, int[][] specialZones)
