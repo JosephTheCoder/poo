@@ -23,6 +23,7 @@ public class Grid {
 		
 		this.width = width;
 		this.height = height;
+		this.cmax = 1;
 		
 		map = new Node[height][width];
 		
