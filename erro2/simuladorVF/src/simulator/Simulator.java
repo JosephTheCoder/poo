@@ -21,7 +21,6 @@ public class Simulator {
 		
 		
 		XMLFileParser parser = new XMLFileParser(filename);
-		// cenas que supostamente veem do ficheiro
 		int confortsense = parser.getComfortsens();
 		int deathparam = parser.getDeathParam();
 		int reproductionparam = parser.getReproductionParam();
@@ -33,11 +32,12 @@ public class Simulator {
 		int[] finalpoint = parser.getFinalpoint();
 		int  initialpop = parser.getInitpop();
 		int maxpop = parser.getMaxpop();
+		int[] genericparams = {moveparam,deathparam,reproductionparam};
 		Population world = new Population();
 		PriorityQueue<Event> Eventlist = new PriorityQueue<Event>( new EventComparator());
 		Grid worldmap = new Grid(gridwidth,gridheight,parser.getObstacles(),parser.getSpecialZones());
 		
-		worldmap.printGrid();
+		
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -57,6 +57,7 @@ public class Simulator {
 		
 		//Test 1 : Individuos ordenados por conforto
 		List<Individual> inds = world.getIndividualsInPopulation();
+		
 		
 		for(Individual ind : inds) {
 			
@@ -96,7 +97,7 @@ public class Simulator {
 		// Test 3 : see if the Move event actually works
 		while(!Eventlist.isEmpty()) {
 			
-			Eventlist.poll().action(worldmap, world , Eventlist);
+			Eventlist.poll().action(worldmap, world , Eventlist ,confortsense , finalpoint , genericparams);
 			
 		}
 		

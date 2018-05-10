@@ -52,7 +52,7 @@ public class Individual  {
 	}
 
 //*utils class	
-	public double calcConfort(Grid worldmap, int confort_sensitivity, int[] source, int[] dest) {
+	public double calcConfort(Grid worldmap, int confort_sensitivity,  int[] dest) {
 		
 		double aux_confort=0;
 		
@@ -60,7 +60,7 @@ public class Individual  {
 		int cmax = worldmap.getCmax();
 		int cost_path = calcCostPath(worldmap);
 		int lenght_path = getPathSize();
-		int dist = calcDist(source[0], source[1], dest[0], dest[1]);
+		int dist = calcDist(this.getCurrentPoint()[0],this.getCurrentPoint()[1], dest[0], dest[1]);
 		int n = worldmap.getWidth();
 		int m = worldmap.getHeight();
 		

@@ -25,7 +25,10 @@ public abstract class Event {
 		return this.ind;
 	}
 	
-	public abstract void action(Grid map ,Population world , PriorityQueue<Event> Eventlist );
+	public abstract void action(Grid map ,Population world , PriorityQueue<Event> Eventlist, int confort_sensitivity,  int[] dest,int[]genericparams );
 
 
+	
+	
+																							
 }
