@@ -44,7 +44,7 @@ public class Reproduction extends Event {
 			//create child
 			child= new Individual(childid, auxparent.getCurrentPoint());
 			
-			for(int i=0;i<parentspathlenght;i++) {
+			for(int i=1;i<parentspathlenght;i++) {
 				child.addPathPoint(auxpath.get(i));
 				
 			}

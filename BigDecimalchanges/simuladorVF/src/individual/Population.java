@@ -49,12 +49,12 @@ public class Population {
 	
 	public LinkedList<Individual> getIndividualsInPopulation(){
 		
-		return individualsalive;
+		return this.individualsalive;
 	}
 	
 	public List<Individual> getdeathindividuals(){
 		
-		return deathindividuals;
+		return this.deathindividuals;
 	}
 	
 	public void addIndividualAlive (Individual ind) {
@@ -65,8 +65,9 @@ public class Population {
 	public void addDeathIndividual (Individual ind) {
 		
 		decreaseNumberOfIndividuals();
-		this.individualsalive.remove(ind);
 		this.deathindividuals.add(ind);
+		this.individualsalive.remove(ind);
+		
 		
 		
 	}
