@@ -38,6 +38,8 @@ public class Reproduction extends Event {
 			//create child
 			child= new Individual(childid);
 			
+			System.out.println(parentspathlenght);
+			System.out.println(confortslenght);
 			
 			for(int i=0;i<parentspathlenght;i++) {
 				child.addPathPoint(auxpath.get(i));

@@ -116,12 +116,16 @@ public class Individual  {
 		this.path_list.add(point);
 	}
 	
-	
+	// has problems
 	public int[] getCurrentPoint() {
 		int test;
-		test=this.path_list.size();
-		test=test-1;
-		return this.path_list.get(test);
+		int[] newvec = {0,0}; //initialpoint
+		test=this.getPathSize();
+		if(test!=0){
+			test=test-1;
+			return this.path_list.get(test);
+		}
+		return newvec;
 	}
 	
 	

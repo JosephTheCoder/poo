@@ -2,6 +2,7 @@ package individual;
 
 import java.util.*;
 
+
 // this is a composition
 public class Population {
 	
@@ -76,15 +77,34 @@ public class Population {
 	
 	public LinkedList<Individual> epidemic() {
 		
+		Random decider = new Random();
+		
+		double dec = decider.nextDouble();
+		
 		LinkedList<Individual> indList = new LinkedList<Individual>();
 		
 		//best five remain 
 		
-		Collections.sort(this.individualsalive, new SortByConfort()); // ordena a lista por conforto
+		Collections.sort(this.individualsalive, new SortByConfort()); 
+		
 		for(int i=0 ; i<5;i++) {
 			
 			indList.add(this.individualsalive.get(i));
 			
+			
+		}
+		
+		for(int i=5 ; i< this.individualsalive.size() ; i++) {
+			
+			if(this.individualsalive.get(i).getConfort() > dec) {
+				
+				indList.add(this.individualsalive.get(i));
+				
+			}
+			
+			else {
+				this.deathindividuals.add(this.individualsalive.get(i));
+			}
 			
 		}
 		
