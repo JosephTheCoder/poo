@@ -19,6 +19,7 @@ public class Grid {
 	
 	public Grid(int width, int height, int[][] obstacles, int[][] specialZones)
 	{
+		//setting the variables
 		int[] position = new int[2];
 		
 		this.width = width;
@@ -27,6 +28,7 @@ public class Grid {
 		
 		map = new Node[height][width];
 		
+		//Creation of the nodes and setting the edges
 		for(int i = 0; i < height; i++)
 		{
 			for(int j = 0; j < width; j++)
@@ -54,7 +56,10 @@ public class Grid {
 			}
 		}
 		
+		//setting the obstacles
 		setObstacles(obstacles);
+		
+		
 		setSpecialZones(specialZones);
 	}
 	
