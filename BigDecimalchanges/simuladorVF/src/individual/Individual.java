@@ -21,14 +21,16 @@ public class Individual  {
 	List<int[]> path_list;
 	
 	//constructor
-	public Individual(int identifier, int[] initial_position) {
+
+	
+	public Individual(int identifier , int[] initial_position) {
 		
 		this.identifier=identifier;
 		this.path_list=new ArrayList<int[]>();
 		this.confort=new BigDecimal(0);
-		
 		this.position = new int[2];
 		this.position = initial_position;
+		
 	}
 	
 	
@@ -115,17 +117,14 @@ public class Individual  {
 	
 	//falta os custos
 	public void addPathPoint(int[] point) {
+		
 		this.position = point;
 		this.path_list.add(point);
 	}
 	
 	// has problems
 	public int[] getCurrentPoint() {
-		return position;
-	}
-	
-	public void setCurrentPoint(int[] position) {
-		this.position = position;
+		return this.position;
 	}
 	
 	
@@ -156,6 +155,7 @@ public class Individual  {
 	public int[] getNextPathPoint (Grid map,int [] position) {
 		
 		return map.getNextPosition(position);
+		
 	}
 	
 	public void printPathList() {

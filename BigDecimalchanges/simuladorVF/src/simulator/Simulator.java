@@ -48,7 +48,7 @@ public class Simulator {
 		// criação da população inicial
 		for(int i=0;i<initialpop;i++) {
 			
-			Individual ind = new Individual(i, initialpoint);
+			Individual ind = new Individual(i,initialpoint);
 			ind.addPathPoint(initialpoint);
 			ind.calcConfort(worldmap, confortsense, finalpoint);
 			world.addIndividualAlive(ind);
@@ -99,11 +99,40 @@ public class Simulator {
 		
 		*/
 		
+	
 		//final test******************************
-		while(!Eventlist.isEmpty() || currenttime.compareTo(finalinst)==1) {
+		while(!Eventlist.isEmpty() && currenttime.compareTo(finalinst)!=1 && !world.individualsalive.isEmpty()) {
 			
 			currenttime=Eventlist.poll().action(worldmap, world, Eventlist, confortsense, finalpoint, genericparams);
-			System.out.println(currenttime.toString());
+			//System.out.println(currenttime.toString());
+		}
+		
+
+		
+		System.out.println("++++++++++++++++++++results++++++++++++++++++++++");
+		
+		List<Individual> indsd = world.getdeathindividuals();
+		
+		for(Individual ind : indsd) {
+			
+			System.out.println(ind.toString());	
+			ind.printPathList();
+			System.out.println("individual path size : " +ind.getPathSize());
+			System.out.println("individual current point : " +ind.getCurrentPoint()[0] + ind.getCurrentPoint()[1] );
+			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+			
+		}
+		
+	List<Individual> indslast = world.getIndividualsInPopulation();
+		
+		
+		for(Individual ind : indslast) {
+			
+			System.out.println(ind.toString());
+			ind.printPathList();
+			System.out.println("individual path size : " +ind.getPathSize());
+			System.out.println("individual current point : " +ind.getCurrentPoint()[0] + ind.getCurrentPoint()[1] );
+			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		}
 		
 	}

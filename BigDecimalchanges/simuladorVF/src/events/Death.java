@@ -28,12 +28,16 @@ public class Death extends Event {
 		id= world.individualsalive.get(world.individualsalive.indexOf(ind)).getIdentifier();
 		//execute dead 
 		world.addDeathIndividual(world.individualsalive.get(world.individualsalive.indexOf(ind)));
+
 		
+		//
 		//remove all events from the individual that died from eventlist
 		
 		while(!Eventlist.isEmpty()) {
 			
+			
 			Event aux = Eventlist.poll();
+			
 			
 			if(aux.getIndividual().getIdentifier()!=id) {
 				
@@ -41,9 +45,10 @@ public class Death extends Event {
 				
 			}
 			
-			Eventlist=newEventlist;
 			
 		}
+		
+		Eventlist=newEventlist;
 		
 		return this.getTime();
 	}
