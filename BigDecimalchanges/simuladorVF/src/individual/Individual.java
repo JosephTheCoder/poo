@@ -124,6 +124,10 @@ public class Individual  {
 		return position;
 	}
 	
+	public void setCurrentPoint(int[] position) {
+		this.position = position;
+	}
+	
 	
 	public List<int[]> getPath() {
 		
@@ -152,7 +156,6 @@ public class Individual  {
 	public int[] getNextPathPoint (Grid map,int [] position) {
 		
 		return map.getNextPosition(position);
-		
 	}
 	
 	public void printPathList() {

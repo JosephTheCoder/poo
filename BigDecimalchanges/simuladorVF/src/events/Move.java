@@ -24,6 +24,7 @@ public class Move extends Event {
 		
 		// Execute a movement
 		world.individualsalive.get(world.individualsalive.indexOf(ind)).addPathPoint(ind.getNextPathPoint(map, ind.getCurrentPoint()));
+		world.individualsalive.get(world.individualsalive.indexOf(ind)).setCurrentPoint(ind.getNextPathPoint(map, ind.getCurrentPoint()));
 		
 		// Calculate the new confort of the individual
 		
