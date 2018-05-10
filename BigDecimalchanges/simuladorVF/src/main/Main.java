@@ -9,7 +9,7 @@ public class Main {
 		
 		//String xmlFile = args[0];
 		
-		String xmlFile = "data1.xml";
+		String xmlFile = "simuladorVF/data1.xml";
 		
 		Simulator simulation = new Simulator();
 		

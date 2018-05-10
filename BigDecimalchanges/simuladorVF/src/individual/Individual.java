@@ -14,27 +14,21 @@ public class Individual  {
 	
 	private int identifier;
 	
+	private int[] position;
+	
 	private BigDecimal  confort;
 	
 	List<int[]> path_list;
 	
 	//constructor
-	
-	public  Individual(int identifier , BigDecimal initial_confort) {
-		 
-		this.identifier=identifier;
-		this.confort=initial_confort;
-		this.path_list= new ArrayList<int[]>();
-		
-		
-	}
-	
-	public Individual(int identifier) {
+	public Individual(int identifier, int[] initial_position) {
 		
 		this.identifier=identifier;
 		this.path_list=new ArrayList<int[]>();
 		this.confort=new BigDecimal(0);
 		
+		this.position = new int[2];
+		this.position = initial_position;
 	}
 	
 	
@@ -121,20 +115,13 @@ public class Individual  {
 	
 	//falta os custos
 	public void addPathPoint(int[] point) {
-		
+		this.position = point;
 		this.path_list.add(point);
 	}
 	
 	// has problems
 	public int[] getCurrentPoint() {
-		int test;
-		int[] newvec = {0,0}; //initialpoint
-		test=this.getPathSize();
-		if(test!=0){
-			test=test-1;
-			return this.path_list.get(test);
-		}
-		return newvec;
+		return position;
 	}
 	
 	

@@ -48,7 +48,7 @@ public class Simulator {
 		// criação da população inicial
 		for(int i=0;i<initialpop;i++) {
 			
-			Individual ind = new Individual(i);
+			Individual ind = new Individual(i, initialpoint);
 			ind.addPathPoint(initialpoint);
 			ind.calcConfort(worldmap, confortsense, finalpoint);
 			world.addIndividualAlive(ind);
