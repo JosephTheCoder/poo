@@ -1,0 +1,20 @@
+A lista de eventos funciona .
+Todo funciona nas utilities.
+Todo funciona no xmlparser.
+Todo da classe evento funciona.
+A lista de individuos funciona.
+A lista de morto funciona.
+A main funciona.
+O simulator funciona.
+
+
+Todo no Individuo Funciona exceto o getcurrentpoint.
+Todo funciona na grid/node exceto a cena que cria um random movimento .
+
+O death mata mesmo mas não sei se remove bem.
+
+O move faz com que eles andem mas não sei se adiciona bem os próximos moves.
+
+O reproduction reproduz no entanto não sei se está a por o caminho certo
+nos filhos e a fazer os novos eventos bem .
+
