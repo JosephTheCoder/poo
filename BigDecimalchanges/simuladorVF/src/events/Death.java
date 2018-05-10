@@ -20,7 +20,7 @@ public class Death extends Event {
 	
 	public BigDecimal action(Grid map , Population world , PriorityQueue<Event> Eventlist, int confort_sensitivity,  int[] dest , int[]genericparams ) {
 		
-		System.out.println("Entrei na morte neste tempo : " + this.getTime().toString());
+		
 		
 		int id;
 		PriorityQueue<Event> newEventlist = new PriorityQueue<Event>( new EventComparator());

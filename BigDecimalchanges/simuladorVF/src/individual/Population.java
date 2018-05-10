@@ -1,8 +1,9 @@
 package individual;
 
 import java.util.*;
-
 import java.math.*;
+
+import events.*;
 
 
 // this is a composition
@@ -78,7 +79,7 @@ public class Population {
 	}
 	
 	
-	public LinkedList<Individual> epidemic() {
+	public LinkedList<Individual> epidemic(PriorityQueue<Event>EventList ) {
 		
 		Random decider = new Random();
 		
@@ -88,30 +89,65 @@ public class Population {
 		
 		LinkedList<Individual> indList = new LinkedList<Individual>();
 		
+		PriorityQueue<Event> newEventlist = new PriorityQueue<Event>( new EventComparator());
+		
+		PriorityQueue<Event> copyEventlist = EventList;
+		
+		
 		//best five remain 
 		
-		Collections.sort(this.individualsalive, new SortByConfort()); 
+		Collections.sort(indList, new SortByConfort()); 
 		
 		for(int i=0 ; i<5;i++) {
 			
 			indList.add(this.individualsalive.get(i));
 			
+			while(!copyEventlist.isEmpty()) {
+				
+				
+				Event aux = copyEventlist.poll();
+				
+				
+				if(aux.getIndividual().getIdentifier()==i) {
+					
+					newEventlist.add(aux);
+					
+				}
+			
 			
 		}
+	}
+		
+		copyEventlist = EventList;
 		
 		for(int i=5 ; i< this.individualsalive.size() ; i++) {
 			
 			if(this.individualsalive.get(i).getConfort().compareTo(deciderD)==1) {
 			
 				indList.add(this.individualsalive.get(i));
+				while(!copyEventlist.isEmpty()) {
+					
+					
+					Event aux =copyEventlist.poll();
+					
+					
+					if(aux.getIndividual().getIdentifier()==i) {
+						
+						newEventlist.add(aux);
+						
+					}
 				
+				}
 			}
 			
 			else {
-				this.deathindividuals.add(this.individualsalive.get(i));
+				this.addDeathIndividual(this.individualsalive.get(i));
 			}
 			
 		}
+		
+		
+		EventList= newEventlist;
 		
 		
 		

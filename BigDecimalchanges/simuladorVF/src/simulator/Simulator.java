@@ -65,6 +65,7 @@ public class Simulator {
 		
 		// Handling the initial population and it´s events
 		
+		/*
 		for(Individual ind : inds) {
 			
 			System.out.println(ind.toString());
@@ -73,6 +74,7 @@ public class Simulator {
 			System.out.println("individual current point : " +ind.getCurrentPoint()[0] + ind.getCurrentPoint()[1] );
 			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		}
+		*/
 		
 		for(Individual ind : inds) {
 			
@@ -85,33 +87,25 @@ public class Simulator {
 			
 		}
 		
-		// teste da lista de eventos 
-		
-		/*
-		int conta =0;
-		while(!Eventlist.isEmpty()) {
-			conta ++;
-			System.out.println(Eventlist.poll().toString());
-			
-		}
-		
-		System.out.println(conta);
-		
-		*/
 		
 	
 		//final test******************************
 		while(!Eventlist.isEmpty() && currenttime.compareTo(finalinst)!=1 && !world.individualsalive.isEmpty()) {
 			
 			currenttime=Eventlist.poll().action(worldmap, world, Eventlist, confortsense, finalpoint, genericparams);
+			if(world.individualsalive.size()> maxpop) {
+				world.individualsalive= world.epidemic(Eventlist);
+			}
 			//System.out.println(currenttime.toString());
 		}
 		
 
-		
+		Collections.sort(world.individualsalive, new SortByConfort()); 
 		System.out.println("++++++++++++++++++++results++++++++++++++++++++++");
 		
 		List<Individual> indsd = world.getdeathindividuals();
+		
+		Collections.sort(indsd, new SortByConfort()); 
 		
 		for(Individual ind : indsd) {
 			
