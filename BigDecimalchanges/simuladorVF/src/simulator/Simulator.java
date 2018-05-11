@@ -39,6 +39,10 @@ public class Simulator {
 		PriorityQueue<Event> Eventlist = new PriorityQueue<Event>( new EventComparator());
 		Grid worldmap = new Grid(gridwidth,gridheight,parser.getObstacles(),parser.getSpecialZones());
 		BigDecimal currenttime = new BigDecimal(0);
+		BigDecimal printtime = new BigDecimal(0);
+		BigDecimal twenty = new BigDecimal(20);
+		BigDecimal printtiming = finalinst.divide(twenty);
+		
 		
 		
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -96,10 +100,26 @@ public class Simulator {
 			if(world.individualsalive.size()> maxpop) {
 				world.individualsalive= world.epidemic(Eventlist);
 			}
+			
+			if(currenttime.compareTo(printtime)==1) {
+				
+				System.out.println("Printing Best individual at current time : " + currenttime.setScale(0, RoundingMode.HALF_UP));
+				Collections.sort(world.individualsalive , new SortByConfort());
+				Individual best = world.individualsalive.get(0);
+				System.out.println(best.toString());	
+				best.printPathList();
+				System.out.println("individual path size : " +best.getPathSize());
+				System.out.println("individual current point : " +best.getCurrentPoint()[0] + best.getCurrentPoint()[1] );
+				System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+				printtime = printtime.add(printtiming);
+				
+			}
 			//System.out.println(currenttime.toString());
 		}
 		
-
+		// result testing
+		
+		/*
 		Collections.sort(world.individualsalive, new SortByConfort()); 
 		System.out.println("++++++++++++++++++++results++++++++++++++++++++++");
 		
@@ -128,7 +148,9 @@ public class Simulator {
 			System.out.println("individual current point : " +ind.getCurrentPoint()[0] + ind.getCurrentPoint()[1] );
 			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		}
+		*/
 		
+		System.out.println("End of Program");
 	}
 		
 		
