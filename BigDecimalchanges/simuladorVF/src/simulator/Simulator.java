@@ -1,3 +1,16 @@
+/*
+ * File Name : Simulator.java
+ * Package : simulator
+ * 
+ * Description: Class which takes care of creating and executing the simulation.
+ * 
+ * Authors: José Correia
+ * 			Pedro Soares
+ * 			Tiago Santos
+ * 
+ * Date: 11 May 2018 
+ */
+
 package simulator;
 
 import grid.*;
@@ -15,13 +28,22 @@ import utilities.*;
 
 public class Simulator {
 	
+	//Empty Constructor 
 	public Simulator() {
 		
 	}
 	
+	/*
+	 * Function name : SimulatorSimulate
+	 * Entries : filename
+	 * Return : 
+	 * Description : This function is the "brain" of the all program it basically processes everything in order to effectuate a
+	 * 				simulation given a file.
+	 * 
+	 */
 	public void SimulatorSimulate(String filename) {
 		
-		
+		// Variables extract from the file in question
 		XMLFileParser parser = new XMLFileParser(filename);
 		int confortsense = parser.getComfortsens();
 		int deathparam = parser.getDeathParam();
@@ -34,22 +56,24 @@ public class Simulator {
 		int[] finalpoint = parser.getFinalpoint();
 		int  initialpop =parser.getInitpop();
 		int maxpop = parser.getMaxpop();
+		
+		// Auxiliar Variable to simplify somo function entries and loops
 		int[] genericparams = {moveparam,deathparam,reproductionparam};
-		Population world = new Population();
-		PriorityQueue<Event> Eventlist = new PriorityQueue<Event>( new EventComparator());
-		Grid worldmap = new Grid(gridwidth,gridheight,parser.getObstacles(),parser.getSpecialZones());
 		BigDecimal currenttime = new BigDecimal(0);
 		BigDecimal printtime = new BigDecimal(0);
 		BigDecimal twenty = new BigDecimal(20);
 		BigDecimal printtiming = finalinst.divide(twenty);
 		
+		// Structure wich will hold all death and live individuals troughout the simulation.
+		Population world = new Population();
+		// Event queue wich will hold all the events troughout the simulation.
+		PriorityQueue<Event> Eventlist = new PriorityQueue<Event>( new EventComparator());
+		// The grid map
+		Grid worldmap = new Grid(gridwidth,gridheight,parser.getObstacles(),parser.getSpecialZones());
+	
 		
 		
-		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		
-		// criação da população inicial
+		// Birth of the initial population
 		for(int i=0;i<initialpop;i++) {
 			
 			Individual ind = new Individual(i,initialpoint);
@@ -60,25 +84,14 @@ public class Simulator {
 			
 		}
 		
-		//ordenar por conforto
+		// Ordination of the initial population in regard to confort ( From higher comfort to lowest comfort)
 		Collections.sort(world.individualsalive , new SortByConfort());
 		
 		
-		//Test 1 : Individuos ordenados por conforto
+		// Events of the initial population
+		
 		List<Individual> inds = world.getIndividualsInPopulation();
 		
-		// Handling the initial population and it´s events
-		
-		/*
-		for(Individual ind : inds) {
-			
-			System.out.println(ind.toString());
-			ind.printPathList();
-			System.out.println("individual path size : " +ind.getPathSize());
-			System.out.println("individual current point : " +ind.getCurrentPoint()[0] + ind.getCurrentPoint()[1] );
-			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		}
-		*/
 		
 		for(Individual ind : inds) {
 			
@@ -93,7 +106,7 @@ public class Simulator {
 		
 		
 	
-		//final test******************************
+		// Start of the real simulation
 		while(!Eventlist.isEmpty() && currenttime.compareTo(finalinst)!=1 && !world.individualsalive.isEmpty()) {
 			
 			currenttime=Eventlist.poll().action(worldmap, world, Eventlist, confortsense, finalpoint, genericparams);
@@ -114,42 +127,10 @@ public class Simulator {
 				printtime = printtime.add(printtiming);
 				
 			}
-			//System.out.println(currenttime.toString());
-		}
-		
-		// result testing
-		
-		/*
-		Collections.sort(world.individualsalive, new SortByConfort()); 
-		System.out.println("++++++++++++++++++++results++++++++++++++++++++++");
-		
-		List<Individual> indsd = world.getdeathindividuals();
-		
-		Collections.sort(indsd, new SortByConfort()); 
-		
-		for(Individual ind : indsd) {
-			
-			System.out.println(ind.toString());	
-			ind.printPathList();
-			System.out.println("individual path size : " +ind.getPathSize());
-			System.out.println("individual current point : " +ind.getCurrentPoint()[0] + ind.getCurrentPoint()[1] );
-			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
 			
 		}
 		
-	List<Individual> indslast = world.getIndividualsInPopulation();
-		
-		
-		for(Individual ind : indslast) {
-			
-			System.out.println(ind.toString());
-			ind.printPathList();
-			System.out.println("individual path size : " +ind.getPathSize());
-			System.out.println("individual current point : " +ind.getCurrentPoint()[0] + ind.getCurrentPoint()[1] );
-			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		}
-		*/
-		
+		//End of the simulation :)
 		System.out.println("End of Program");
 	}
 		

@@ -1,3 +1,16 @@
+/*
+ * File Name : Reproduction.java
+ * Package : events
+ * 
+ * Description: Class which takes care of creating and executing reproduction events .
+ * 
+ * Authors: José Correia
+ * 			Pedro Soares
+ * 			Tiago Santos
+ * 
+ * Date: 11 May 2018 
+ */
+
 package events;
 
 import java.util.*;
@@ -7,18 +20,32 @@ import grid.*;
 import individual.*;
 import utilities.Utils;
 
+/*
+ *  Class that implements the Abstract class Event in order to process the multiple reproductions of all the individuals in question.
+ */
+
 public class Reproduction extends Event {
 	
-	
 		
+		
+		// Constructor
+	
 		public Reproduction (BigDecimal time ,Individual ind) {
-			
+		
+		// Call to Event constructor
 		super(time,ind);
 		
 		}
 		
 		
-		//rever might have problems
+		/*
+		 * Function name : action
+		 * Entries : map , world , Eventlist , confort_sensitivity , final point , all event parameters
+		 * Return : It returns a BigDecimal number which represents the time wich this event is taking place
+		 * Description : This function not only processes a reproduction but also takes care of creating the next reproduction event
+		 * 				of the parent and all the first event of the child ( first move , first reproduction and death).
+		 * 
+		 */
 		public BigDecimal action(Grid map , Population world , PriorityQueue<Event> Eventlist, int confort_sensitivity,  int[] dest , int[]genericparams ) {
 			
 			Individual auxparent;
@@ -30,12 +57,12 @@ public class Reproduction extends Event {
 			
 			BigDecimal thistime = this.getTime();
 			
-			// get parent
+			// get parent from the world population
 			auxparent=world.individualsalive.get(world.individualsalive.indexOf(ind));
 			
 			BigDecimal auxD = new BigDecimal(auxparent.getPathSize()/10);
 			
-			//get childs path
+			//get childs path from parents path accordingly
 			parentspathlenght= Math.ceil((auxparent.getPathSize()*9)/10);
 			confortslenght = Math.ceil(auxparent.getConfort().multiply(auxD).doubleValue());
 			
@@ -79,6 +106,7 @@ public class Reproduction extends Event {
 			Eventlist.add(auxmove);
 			Eventlist.add(auxdeath);
 			
+			//Return the current event time
 			return this.getTime();
 			
 		}
