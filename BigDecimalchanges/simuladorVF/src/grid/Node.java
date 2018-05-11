@@ -1,41 +1,73 @@
+/*
+ * File name: Node.java
+ * Package: grid
+ * 
+ * Description: This file class implements the node object.
+ * 				Each node has information on his position, edges and type (if its an obstacle or an empty 
+ * 				available node).
+ * 
+ * Authors: Jose Correia
+ * 			Pedro Soares
+ * 			Tiago Santos
+ * 
+ * Date: 11th may 2018
+ */
+
 package grid;
 
 
 public class Node {
-	private int[] position = new int[2]; /*[x, y]*/
+	//position of the node  -> [x, y]
+	private int[] position = new int[2];
 	
-	private int[] edges = new int[4]; /* weight		[up, down, left, right]*/
+	/* edges vector to store the weight of each edge   [up, down, left, right]*/
+	private int[] edges = new int[4];
+	
+	//type of the node
 	private int type;
 	
-	
+	/*
+	 * Constructor that creates a new node, and sets he's position and type
+	 * the edges are set by default as. [1, 1, 1, 1] (all with weight 1)
+	 */
 	public Node(int[] position, int node_type) 
 	{
 		this.type = node_type;
 		
 		System.arraycopy(position, 0, this.position, 0, position.length);
-		edges[0] = 1;
-		edges[1] = 1;
-		edges[2] = 1;
-		edges[3] = 1;
+		
+		for(int i = 0; i < 4; i++)
+			edges[i] = 1;
 	}
 	
+	/*
+	 * Getter for the node's position
+	 */
 	public int[] getPosition()
 	{
 		return position;
 	}
 	
+	/*
+	 * Getter for the node's edges vector
+	 */
 	public int[] getEdges()
 	{
 		return this.edges;
 	}
 	
+	/*
+	 * Getter for the node's type
+	 */
 	public int getType()
 	{
 		return this.type;
 	}
 	
+	//The next method represent setters for the edges of the node
 	public void setUpperEdge(int value)
 	{
+		//The bigger weight always has priority!!
 		if(edges[0] < value || value == -1)
 			edges[0] = value;
 	}
@@ -58,25 +90,19 @@ public class Node {
 			edges[3] = value;
 	}
 	
+	/*
+	 * Setter for the node's type
+	 */
 	public void setType(int type)
 	{
 		this.type = type;
 	}
 	
+	/*
+	 * Setter for the node's position
+	 */
 	public void setPosition(int[] position) {
 		this.position[0] = position[0];
 		this.position[1] = position[1];
-	}
-	
-	public String toString()
-	{
-		String x = Integer.toString(position[0]);
-		String y = Integer.toString(position[1]);
-		String up = Integer.toString(edges[0]);
-		String down = Integer.toString(edges[1]);
-		String left = Integer.toString(edges[2]);
-		String right = Integer.toString(edges[3]);
-		
-		return "Node coordinates: [" + x + "," + y + "]  Type: " + type + "  Edges: " + up + " " + down + " " + left + " " + right;
 	}
 }
