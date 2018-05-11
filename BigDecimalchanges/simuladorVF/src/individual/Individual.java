@@ -199,6 +199,8 @@ public class Individual  {
 			System.out.println(" x= "+aux[0]+" y= "+aux[1]);
 		}
 	}
+	
+	
 
 	@Override
 	public String toString() {

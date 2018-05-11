@@ -43,7 +43,10 @@ public class Move extends Event {
 	public BigDecimal action(Grid map,Population world , PriorityQueue<Event> Eventlist, int confort_sensitivity,  int[] dest , int[]genericparams) {
 		
 		
-		// Execute a movement
+		// Execute a movement if alive
+		if(world.individualsalive.indexOf(ind)==-1) {
+			return this.getTime();
+		}
 		world.individualsalive.get(world.individualsalive.indexOf(ind)).addPathPoint(ind.getNextPathPoint(map, ind.getCurrentPoint()));
 		
 		// Calculate the new confort of the individual

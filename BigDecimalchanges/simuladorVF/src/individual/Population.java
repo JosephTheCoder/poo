@@ -83,7 +83,7 @@ public class Population {
 		
 		decreaseNumberOfIndividuals();
 		this.deathindividuals.add(ind);
-		this.individualsalive.remove(ind);
+		this.individualsalive.remove(this.individualsalive.indexOf(ind));
 		
 		
 		
@@ -107,10 +107,15 @@ public class Population {
 		
 		PriorityQueue<Event> newEventlist = new PriorityQueue<Event>( new EventComparator());
 		
-		PriorityQueue<Event> copyEventlist = EventList;
+		PriorityQueue<Event> copyEventlist =  new PriorityQueue<Event>( new EventComparator());
 		
 		
 		//best five remain 
+		
+		for(Event eve : EventList) {
+			
+			copyEventlist.add(eve);
+		}
 		
 		Collections.sort(indList, new SortByConfort()); 
 		
@@ -133,14 +138,26 @@ public class Population {
 			
 			
 		}
+			
+			for(Event eve : EventList) {
+				
+				copyEventlist.add(eve);
+			}
 	}
 		
-		copyEventlist = EventList;
+		
+		
+		for(Event eve : EventList) {
+			
+			copyEventlist.add(eve);
+		}
+		
+		
 		
 		for(int i=5 ; i< this.individualsalive.size() ; i++) {
 			
 			if(this.individualsalive.get(i).getConfort().compareTo(deciderD)==1) {
-			
+				
 				indList.add(this.individualsalive.get(i));
 				while(!copyEventlist.isEmpty()) {
 					
@@ -155,6 +172,11 @@ public class Population {
 					}
 				
 				}
+				
+				for(Event eve : EventList) {
+					
+					copyEventlist.add(eve);
+				}
 			}
 			
 			else {
@@ -163,16 +185,15 @@ public class Population {
 			
 		}
 		
+		for(Event eve : newEventlist) {
+			EventList.add(eve);
+		}
 		
-		EventList= newEventlist;
 		
-		return this.individualsalive=indList;
+		
+		return indList;
 	}
 	
-	
-	
-	
-	// create do epidemics ( erase pop and make sure it erases all individuals since it is a composition
 
 }
 

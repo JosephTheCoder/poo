@@ -27,7 +27,7 @@ import utilities.Utils;
 public class Reproduction extends Event {
 	
 		
-		
+	
 		// Constructor
 	
 		public Reproduction (BigDecimal time ,Individual ind) {
@@ -48,16 +48,20 @@ public class Reproduction extends Event {
 		 */
 		public BigDecimal action(Grid map , Population world , PriorityQueue<Event> Eventlist, int confort_sensitivity,  int[] dest , int[]genericparams ) {
 			
+			
 			Individual auxparent;
 			Individual child;
-			int childid = world.individualsalive.size();
+			int childid = world.getNbIndividuals();
 			double parentspathlenght;
 			double confortslenght;
 			List<int[]> auxpath = new ArrayList<int[]>();
 			
 			BigDecimal thistime = this.getTime();
 			
-			// get parent from the world population
+			// get parent from the world population if alive 
+			if(world.individualsalive.indexOf(ind)==-1) {
+				return this.getTime();
+			}
 			auxparent=world.individualsalive.get(world.individualsalive.indexOf(ind));
 			
 			BigDecimal auxD = new BigDecimal(auxparent.getPathSize()/10);
@@ -86,7 +90,7 @@ public class Reproduction extends Event {
 			
 			//add child to world
 			
-			world.individualsalive.add(child);
+			world.addIndividualAlive(child);
 			
 			// calculates the next reproduction of the parent 
 			

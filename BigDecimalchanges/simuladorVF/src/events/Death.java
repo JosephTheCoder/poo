@@ -42,10 +42,12 @@ public class Death extends Event {
 	public BigDecimal action(Grid map , Population world , PriorityQueue<Event> Eventlist, int confort_sensitivity,  int[] dest , int[]genericparams ) {
 		
 		
-		
 		int id;
 		PriorityQueue<Event> newEventlist = new PriorityQueue<Event>( new EventComparator());
 		
+		if(world.individualsalive.indexOf(ind)==-1) {
+			return this.getTime();
+		}
 		id= world.individualsalive.get(world.individualsalive.indexOf(ind)).getIdentifier();
 		//execute dead 
 		world.addDeathIndividual(world.individualsalive.get(world.individualsalive.indexOf(ind)));
@@ -53,9 +55,8 @@ public class Death extends Event {
 		
 		//
 		//remove all events from the individual that died from eventlist
-		
+	
 		while(!Eventlist.isEmpty()) {
-			
 			
 			Event aux = Eventlist.poll();
 			
@@ -69,7 +70,11 @@ public class Death extends Event {
 			
 		}
 		
-		Eventlist=newEventlist;
+		
+		for(Event eve : newEventlist) {
+			Eventlist.add(eve);
+		}
+		
 		
 		return this.getTime();
 	}

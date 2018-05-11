@@ -45,7 +45,7 @@ public class Simulator {
 		
 		// Variables extract from the file in question
 		XMLFileParser parser = new XMLFileParser(filename);
-		int confortsense = parser.getComfortsens();
+		int confortsense =parser.getComfortsens();
 		int deathparam = parser.getDeathParam();
 		int reproductionparam = parser.getReproductionParam();
 		int moveparam = parser.getMoveParam();
@@ -104,12 +104,14 @@ public class Simulator {
 			
 		}
 		
-		
+			
 	
 		// Start of the real simulation
 		while(!Eventlist.isEmpty() && currenttime.compareTo(finalinst)!=1 && !world.individualsalive.isEmpty()) {
 			
 			currenttime=Eventlist.poll().action(worldmap, world, Eventlist, confortsense, finalpoint, genericparams);
+			
+			
 			if(world.individualsalive.size()> maxpop) {
 				world.individualsalive= world.epidemic(Eventlist);
 			}
@@ -130,8 +132,7 @@ public class Simulator {
 			
 		}
 		
-		//End of the simulation :)
-		System.out.println("End of Program");
+		
 	}
 		
 		
