@@ -6,10 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		
-		//String xmlFile = args[0];
-		
-		String xmlFile = "data1.xml";
+		String xmlFile = String.join("/", "TESTS", args[0]);
 		
 		Simulator simulation = new Simulator();
 		
