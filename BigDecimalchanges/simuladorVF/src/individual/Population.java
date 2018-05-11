@@ -1,3 +1,19 @@
+/*
+ * File name: Population.java
+ * Package: individual
+ * 
+ * Description: This file class implements the grid where the individuals move.
+ * 				This includes the creation of the matrix of Node objects, the setting
+ * 				of the obstacles and the special zones including edges with bigger weight.
+ *
+ * 
+ * Authors: José Correia
+ * 			Pedro Soares
+ * 			Tiago Santos
+ * 
+ * Date: 11th may 2018
+ */
+
 package individual;
 
 import java.util.*;
@@ -106,6 +122,7 @@ public class Population {
 				
 				
 				Event aux = copyEventlist.poll();
+
 				
 				
 				if(aux.getIndividual().getIdentifier()==i) {
@@ -148,10 +165,6 @@ public class Population {
 		
 		
 		EventList= newEventlist;
-		
-		
-		
-		// rest of code for the others
 		
 		return this.individualsalive=indList;
 	}
