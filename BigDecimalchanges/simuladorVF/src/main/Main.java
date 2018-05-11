@@ -11,7 +11,5 @@ public class Main {
 		Simulator simulation = new Simulator();
 		
 		simulation.SimulatorSimulate(xmlFile);
-		
 	}
-
 }
