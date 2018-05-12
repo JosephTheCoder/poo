@@ -195,7 +195,7 @@ public class Grid {
 		
 		//while a next position hasn't been found:
 		do {
-			randomInt = rand.nextInt(3); //calculate a random int, range from 0 to 3
+			randomInt = rand.nextInt(4); //calculate a random int, range from 0 to 3
 			found = 0;
 			
 			//if the edge according to the random integer does not lead
