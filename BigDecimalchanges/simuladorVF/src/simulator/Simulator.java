@@ -130,5 +130,12 @@ public class Simulator {
 				printtime = printtime.add(printtiming);
 			}
 		}
+		
+		System.out.println("Path of the best fit individual: ");
+		Collections.sort(world.individualsalive , new SortByConfort());
+		Individual best = world.individualsalive.get(0);
+		System.out.println(best.toString());	
+		best.printPathList();
+		
 	}
 }
