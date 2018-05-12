@@ -8,7 +8,6 @@ public class Main {
 		
 		String xmlFile = String.join("/", "TESTS", args[0]);
 		
-		//String xmlFile = "data1.xml";
 		Simulator simulation = new Simulator();
 		
 		simulation.SimulatorSimulate(xmlFile);
