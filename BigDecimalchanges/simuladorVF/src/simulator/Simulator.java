@@ -80,8 +80,6 @@ public class Simulator {
 			ind.addPathPoint(initialpoint);
 			ind.calcConfort(worldmap, confortsense, finalpoint);
 			world.addIndividualAlive(ind);
-			
-			
 		}
 		
 		// Ordination of the initial population in regard to confort ( From higher comfort to lowest comfort)
@@ -118,24 +116,19 @@ public class Simulator {
 			}
 			
 			if(currenttime.compareTo(printtime)==1) {
+				System.out.println("Present instant: " + currenttime.setScale(0, RoundingMode.HALF_UP));
+				System.out.println("Population size: " + world.getNbIndividuals());
 				
-				System.out.println("Printing Best individual at current time : " + currenttime.setScale(0, RoundingMode.HALF_UP));
 				Collections.sort(world.individualsalive , new SortByConfort());
 				Individual best = world.individualsalive.get(0);
 				System.out.println(best.toString());	
 				best.printPathList();
-				System.out.println("individual path size : " +best.getPathSize());
-				System.out.println("individual current point : " +best.getCurrentPoint()[0] + best.getCurrentPoint()[1] );
+				
+				System.out.println("Comfort: " + best.getConfort());
+				
 				System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
 				printtime = printtime.add(printtiming);
-				
 			}
-			
 		}
-		
-		
 	}
-		
-		
-
 }
