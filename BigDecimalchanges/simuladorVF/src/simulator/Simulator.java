@@ -47,7 +47,7 @@ public class Simulator {
 		XMLFileParser parser = new XMLFileParser(filename);
 		int confortsense =parser.getComfortsens();
 		int deathparam = parser.getDeathParam();
-		int reproductionparam = parser.getReproductionParam();
+		int reproductionparam =parser.getReproductionParam();
 		int moveparam = parser.getMoveParam();
 		BigDecimal finalinst = new BigDecimal(parser.getFinalinst());
 		int gridheight = parser.getGridHeight();
@@ -109,6 +109,7 @@ public class Simulator {
 		// Start of the real simulation
 		while(!Eventlist.isEmpty() && currenttime.compareTo(finalinst)!=1 && !world.individualsalive.isEmpty()) {
 			
+			//System.out.println(currenttime.toString());
 			currenttime=Eventlist.poll().action(worldmap, world, Eventlist, confortsense, finalpoint, genericparams);
 			
 			
